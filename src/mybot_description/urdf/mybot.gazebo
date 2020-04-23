@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot>
 
-  <gazebo reference="left_wheel_hinge">
+  <!-- <gazebo reference="left_wheel_hinge">
       <mu1 value="10000.0" />
       <mu2 value="10000.0" />
       <kp value="100000.0" />
@@ -16,7 +16,7 @@
       <kd value="0.00001" />
       <maxVel value="1.0" />
       <minDepth value="0.0001" />
-  </gazebo>    
+  </gazebo>     -->
 
 <gazebo>
   <plugin name="skid_steer_drive_controller" filename="libgazebo_ros_skid_steer_drive.so">
@@ -26,10 +26,10 @@
     <rightFrontJoint>right_wheel_hinge</rightFrontJoint>
     <leftRearJoint>left_wheel_hinge_1</leftRearJoint>
     <rightRearJoint>right_wheel_hinge_1</rightRearJoint>
-    <wheelSeparation>0.4</wheelSeparation>
-    <wheelDiameter>0.2</wheelDiameter>
+    <wheelSeparation>${chassis_W + wheel_L/2 + wheels_offset}</wheelSeparation>
+    <wheelDiameter>${wheel_R * 2}</wheelDiameter>
     <robotBaseFrame>base_link</robotBaseFrame>
-    <torque>8</torque>
+    <torque>100</torque>
     <topicName>cmd_vel</topicName>
     <broadcastTF>true</broadcastTF>
   </plugin>
@@ -186,7 +186,7 @@
   <gazebo reference="hokuyo">
     <sensor type="ray" name="head_hokuyo_sensor">
       <pose>0 0 0 0 0 0</pose>
-      <visualize>true</visualize>
+      <visualize>false</visualize>
       <update_rate>40</update_rate>
       <ray>
         <scan>

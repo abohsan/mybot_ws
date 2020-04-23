@@ -5,41 +5,41 @@
     <collision name="collision">
       <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
       <geometry>
-        <cylinder radius="0.1" length="0.05"/>
+        <cylinder radius="${wheel_R}" length="${wheel_L}"/>
       </geometry>
     </collision>
     <visual name="left_wheel_visual">
       <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
       <geometry>
-        <cylinder radius="0.1" length="0.05"/>
+        <cylinder radius="${wheel_R}" length="${wheel_L}"/>
       </geometry>
     </visual>
     <inertial>
       <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
-      <mass value="5"/>
+      <mass value="${wheels_mass}"/>
       <inertia
         ixx=".1" ixy="0.0" ixz="0.0"
         iyy=".1" iyz="0.0"
         izz=".1"/> 
     </inertial>
-
 </link>
+
     <link name="left_wheel_1">
     <collision name="collision">
       <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
       <geometry>
-        <cylinder radius="0.1" length="0.05"/>
+        <cylinder radius="${wheel_R}" length="${wheel_L}"/>
       </geometry>
     </collision>
     <visual name="left_wheel_visual_1">
       <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
       <geometry>
-        <cylinder radius="0.1" length="0.05"/>
+        <cylinder radius="${wheel_R}" length="${wheel_L}"/>
       </geometry>
     </visual>
     <inertial>
       <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
-      <mass value="5"/>
+      <mass value="${wheels_mass}"/>
       <inertia
         ixx=".1" ixy="0.0" ixz="0.0"
         iyy=".1" iyz="0.0"
@@ -51,18 +51,18 @@
     <collision name="collision">
       <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
       <geometry>
-        <cylinder radius="0.1" length="0.05"/>
+        <cylinder radius="${wheel_R}" length="${wheel_L}"/>
       </geometry>
     </collision>
     <visual name="right_wheel_visual">
       <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
       <geometry>
-        <cylinder radius="0.1" length="0.05"/>
+        <cylinder  radius="${wheel_R}" length="${wheel_L}"/>
       </geometry>
     </visual>
     <inertial>
       <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
-      <mass value="5"/>
+      <mass value="${wheels_mass}"/>
       <inertia
         ixx=".1" ixy="0.0" ixz="0.0"
         iyy=".1" iyz="0.0"
@@ -70,22 +70,22 @@
     </inertial>
   </link>
 
-    <link name="right_wheel_1">
+  <link name="right_wheel_1">
     <collision name="collision">
       <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
       <geometry>
-        <cylinder radius="0.1" length="0.05"/>
+        <cylinder  radius="${wheel_R}" length="${wheel_L}"/>
       </geometry>
     </collision>
     <visual name="right_wheel_visual">
       <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
       <geometry>
-        <cylinder radius="0.1" length="0.05"/>
+        <cylinder  radius="${wheel_R}" length="${wheel_L}"/>
       </geometry>
     </visual>
     <inertial>
       <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
-      <mass value="5"/>
+      <mass value="${wheels_mass}"/>
       <inertia
         ixx=".1" ixy="0.0" ixz="0.0"
         iyy=".1" iyz="0.0"
@@ -93,8 +93,8 @@
     </inertial>
   </link>
 
-    <joint type="continuous" name="left_wheel_hinge">
-    <origin xyz="0.11 0.15 0" rpy="0 0 0"/>
+  <joint type="continuous" name="left_wheel_hinge">
+    <origin xyz="${(chassis_x + chassis_L/2 - wheel_R)} ${chassis_y + (chassis_W/2 + wheel_L/2 + wheels_offset )} ${chassis_z - chassis_H/2}" rpy="0 0 0"/>
     <child link="left_wheel"/>
     <parent link="chassis"/>
     <axis xyz="0 1 0" rpy="0 0 0"/>
@@ -104,7 +104,7 @@
 
 
   <joint type="continuous" name="left_wheel_hinge_1">
-    <origin xyz="-0.11 0.15 0" rpy="0 0 0"/>
+    <origin xyz="${chassis_x - (chassis_L/2 - wheel_R)} ${chassis_y + (chassis_W/2 + wheel_L/2 + wheels_offset)} ${chassis_z - chassis_H/2}" rpy="0 0 0"/>
     <child link="left_wheel_1"/>
     <parent link="chassis"/>
     <axis xyz="0 1 0" rpy="0 0 0"/>
@@ -113,7 +113,7 @@
   </joint>
 
   <joint type="continuous" name="right_wheel_hinge">
-    <origin xyz="0.11 -0.15 0" rpy="0 0 0"/>
+    <origin xyz="${(chassis_x + chassis_L/2 - wheel_R)} ${chassis_y - (chassis_W/2 + wheel_L/2 + wheels_offset)} ${chassis_z - chassis_H/2}" rpy="0 0 0"/>
     <child link="right_wheel"/>
     <parent link="chassis"/>
     <axis xyz="0 1 0" rpy="0 0 0"/>
@@ -123,7 +123,7 @@
 
   
   <joint type="continuous" name="right_wheel_hinge_1">
-    <origin xyz="-0.11 -0.15 0" rpy="0 0 0"/>
+    <origin xyz="${chassis_x - (chassis_L/2 - wheel_R)} ${chassis_y - (chassis_W/2 + wheel_L/2 + wheels_offset)} ${chassis_z - chassis_H/2}" rpy="0 0 0"/>
     <child link="right_wheel_1"/>
     <parent link="chassis"/>
     <axis xyz="0 1 0" rpy="0 0 0"/>

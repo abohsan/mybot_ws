@@ -4,12 +4,13 @@
 
   
 
+  <xacro:include filename="$(find mybot_description)/urdf/parameter.xacro" />
   <xacro:include filename="$(find mybot_description)/urdf/mybot.gazebo" />
   <xacro:include filename="$(find mybot_description)/urdf/materials.xacro" />
   <xacro:include filename="$(find mybot_description)/parts/velodyne.xacro" />
   <xacro:include filename="$(find mybot_description)/parts/wheels.xacro" />
-  <xacro:include filename="$(find mybot_description)/parts/cameras.xacro" />
-  <xacro:include filename="$(find mybot_description)/parts/lidar_2d.xacro" />
+  <xacro:include filename="$(find mybot_description)/parts/cameras.xacro" /> 
+  <xacro:include filename="$(find mybot_description)/parts/lidar_2d.xacro" /> 
 
   <link name="base_link">
   </link>
@@ -35,14 +36,14 @@
 
     <collision name='collision'>
       <geometry>
-        <box size=".4 .2 .1"/>
+        <box size="${chassis_L}  ${chassis_W}  ${chassis_H}"/>
       </geometry>
     </collision>
 
     <visual name='chassis_visual'>
-      <origin xyz="0 0 0" rpy=" 0 0 0"/>
+      <origin xyz="${chassis_x}  ${chassis_y} ${chassis_z}" rpy=" 0 0 0"/>
       <geometry>
-        <box size=".4 .2 .1"/>
+        <box size="${chassis_L}  ${chassis_W}  ${chassis_H}"/>
       </geometry>
     </visual>
   </link>
@@ -62,23 +63,22 @@
 
     <collision name='collision'>
       <geometry>
-        <box size=".1 .1 .4"/>
+        <box size="${bar_L}  ${bar_W}  ${bar_H}"/>
       </geometry>
     </collision>
 
     <visual name='bar_visual'>
-      <origin xyz="0 0 0" rpy=" 0 0 0"/>
+      <origin xyz="0 0 ${bar_H/2}" rpy=" 0 0 0"/>
       <geometry>
-        <box size=".1 .1 .2"/>
+        <box size="${bar_L}  ${bar_W}  ${bar_H}"/>
       </geometry>
     </visual>
   </link>
 
   <joint name="bar_joint" type="fixed">
-    <origin xyz="0 0 0.15" rpy="0 0 0"/>
+    <origin xyz="${chassis_x + bar_x} ${chassis_y + bar_y} ${chassis_z + chassis_H/2 + bar_z}" rpy="0 0 0"/>
     <parent link="chassis"/>
     <child link="bar"/>
   </joint>
-
 </robot>
 

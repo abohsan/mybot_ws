@@ -3,7 +3,7 @@
 <robot name="myrobot" xmlns:xacro="http://www.ros.org/wiki/xacro">
   <joint name="hokuyo_joint" type="fixed">
     <axis xyz="0 1 0" />
-    <origin xyz=".15 0 .1" rpy="0 0 0"/>
+    <origin xyz="${chassis_x + chassis_L/2 + lidar_x} ${chassis_y + lidar_y} ${chassis_z + chassis_H/2 + lidar_z}" rpy="0 0 0"/>
     <parent link="chassis"/>
     <child link="hokuyo"/>
   </joint>

@@ -6,9 +6,16 @@
   <xacro:property name="gpu" value="$(arg gpu)" />
   <xacro:include filename="$(find velodyne_description)/urdf/VLP-16.urdf.xacro"/>
 
+ <xacro:property name="velodyne_x" value="0"/>
+ <xacro:property name="velodyne_y" value="0.2"/>
+ <xacro:property name="velodyne_z" value="0."/>
+
+   <xacro:property name="orig_x" value="${chassis_x + bar_x}"/>
+  <xacro:property name="orig_y" value="${chassis_y + bar_y}"/>
+  <xacro:property name="orig_z" value="${chassis_z + chassis_H/2 + bar_H + bar_z  }"/>
 
  <VLP-16 parent="chassis" name="velodyne" topic="/velodyne_points" hz="10" samples="440" gpu="${gpu}">
-    <origin xyz="0 0 0.25" rpy="0 0 0" />
+    <origin xyz="${orig_x} ${orig_y} ${orig_z + velodyne_z}" rpy="0 0 0" />
   </VLP-16> 
 
 </robot>
