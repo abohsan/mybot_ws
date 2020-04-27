@@ -1,0 +1,51 @@
+<?xml version="1.0" ?>
+
+<robot name="mrmg" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  
+  <!-- BGN - Include -->
+  <xacro:include filename="$(find mini_jaguar_pkg)/urdf/robot_parameters.xacro" />
+  <xacro:include filename="$(find mini_jaguar_pkg)/urdf/links_joints.xacro" />
+  <!-- END - Include -->
+  <m_link_mesh name="${link_00_name}"
+              origin_rpy="1.5708 0 0" origin_xyz="0 0 0"
+              mass="157.633"
+              ixx="13.235" ixy="0" ixz="0"
+              iyy="13.235" iyz="0"
+              izz="9.655"
+              meshfile="package://mini_jaguar_pkg/meshes/cowBody.STL"
+              meshscale="0.0025 0.0029 0.003" /> 
+  
+           
+  <m_joint name="${link_00_name}__${link_01_name}" type="revolute"
+           axis_xyz="1 0 0"
+           origin_rpy="0 0 1.5708" origin_xyz="-0.185 0.21 -0.012"
+           parent="${link_00_name}" child="${link_01_name}"
+           limit_e="1000" limit_l="-3.14" limit_u="3.14" limit_v="0.5" /> -->
+
+  <m_link_mesh name="${link_01_name}"
+              origin_rpy="0 0 0" origin_xyz="0 0 0"
+              mass="157.633"
+              ixx="13.235" ixy="0" ixz="0"
+              iyy="13.235" iyz="0"
+              izz="9.655"
+              meshfile="package://mini_jaguar_pkg/meshes/cowWheel1.STL"
+              meshscale="0.0025 0.0025 0.0025" /> 
+
+
+  <m_joint name="${link_00_name}__${link_02_name}" type="revolute"
+           axis_xyz="1 0 0"
+           origin_rpy="0 0 -1.5708" origin_xyz="-0.185 -0.21 -0.012"
+           parent="${link_00_name}" child="${link_02_name}"
+           limit_e="1000" limit_l="-3.14" limit_u="3.14" limit_v="0.5" /> -->
+
+  <m_link_mesh name="${link_02_name}"
+              origin_rpy="0 0 0" origin_xyz="0 0 0"
+              mass="157.633"
+              ixx="13.235" ixy="0" ixz="0"
+              iyy="13.235" iyz="0"
+              izz="9.655"
+              meshfile="package://mini_jaguar_pkg/meshes/cowWheel1.STL"
+              meshscale="0.0025 0.0025 0.0025" />  
+                
+
+</robot>

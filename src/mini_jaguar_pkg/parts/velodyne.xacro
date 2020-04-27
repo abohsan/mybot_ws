@@ -1,0 +1,22 @@
+<?xml version='1.0'?>
+
+<robot name="myrobot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:arg name="gpu" default="false"/>
+  <xacro:property name="gpu" value="$(arg gpu)" />
+  <xacro:include filename="$(find velodyne_description)/urdf/VLP-16.urdf.xacro"/>
+
+ <xacro:property name="velodyne_x" value="0"/>
+ <xacro:property name="velodyne_y" value="0"/>
+ <xacro:property name="velodyne_z" value="0"/>
+
+   <xacro:property name="orig_x" value="${-bar_x}"/>
+  <xacro:property name="orig_y" value="${ bar_y}"/>
+  <xacro:property name="orig_z" value="${(off_The_Ground ) + bar_H + bar_z  }"/>
+
+ <VLP-16 parent="chassis" name="velodyne" topic="/velodyne_points" hz="10" samples="440" gpu="${gpu}">
+    <origin xyz="${orig_x} ${orig_y} ${orig_z + velodyne_z}" rpy="0 0 0" />
+  </VLP-16> 
+
+</robot>
+

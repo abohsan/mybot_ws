@@ -36,9 +36,6 @@
     <remap from="scan" to="mybot/laser/scan"/>
     <param name="move_base/DWAPlannerROS/yaw_goal_tolerance" value="1.0"/>
     <param name="move_base/DWAPlannerROS/xy_goal_tolerance" value="1.0"/>
-
-
-
   </node>
 
 

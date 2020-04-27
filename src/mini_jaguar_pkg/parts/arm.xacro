@@ -1,0 +1,130 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:property name="arm_mass" value="2" />
+              <!-- origin_rpy="0 0 0" origin_xyz="0.2 0 0.05" -->
+<!-- Base Arm -->
+  <m_joint_1 name="${link_00_name}__${link_01_name}" type="revolute"
+           axis_xyz="0 0 1"
+           frict="0.5"
+           damp="0.2"
+           origin_rpy="0 0 0" origin_xyz="${ chassis_L/2 + ArmBase_x - 0.13} ${ ArmBase_y} ${chassis_H + ArmBase_z - 0.028}"
+ 
+           parent="${link_00_name}" child="${link_01_name}"
+
+           limit_e="0" limit_l="0" limit_u="0" limit_v="0" />
+                   <!-- limit_e="0" limit_l="-3.14" limit_u="3.14" limit_v="0.5" />    -->
+  <m_link_mesh name="${link_01_name}"
+              origin_rpy="0 0 0" origin_xyz="0 0 0"
+              mass="${arm_mass}"
+              ixx=".1" ixy="0.0" ixz="0.0"
+              iyy=".1" iyz="0.0"
+              izz=".1"
+              meshfile="package://mini_jaguar_pkg/meshes/armBase.stl"
+              meshscale="0.0003 0.0003 0.0003" /> 
+<!--  Arm 1 -->
+  <m_joint_1 name="${link_01_name}__${link_06_name}" type="revolute"
+           axis_xyz="0 1 0"
+           frict="0.5"
+           damp="0.2"
+           origin_rpy="0 3.14 0" origin_xyz="0 0 0.13"
+           parent="${link_01_name}" child="${link_06_name}"
+  
+           limit_e="1000" limit_l="0" limit_u="2.5" limit_v="0.5" />
+                <!-- limit_e="0" limit_l="0" limit_u="0" limit_v="0" />     -->
+  <m_link_mesh name="${link_06_name}"
+              origin_rpy="0 0 0" origin_xyz="0 -0.0145 -0.0145"
+              mass="${arm_mass}"
+              ixx=".1" ixy="0.0" ixz="0.0"
+              iyy=".1" iyz="0.0"
+              izz=".1"
+              meshfile="package://mini_jaguar_pkg/meshes/arm.stl"
+              meshscale="0.004 0.0029 0.003" /> 
+<!--  Arm 2 -->
+  <m_joint_1 name="${link_06_name}__${link_07_name}" type="revolute"
+           axis_xyz="0 1 0"
+           frict="0.5"
+           damp="0.2"
+           origin_rpy="3.14 3.14 0" origin_xyz="0.44 0 -0.015"
+           parent="${link_06_name}" child="${link_07_name}"
+ 
+           limit_e="1000" limit_l="0.00" limit_u="3.14" limit_v="0.5" />
+                   <!-- limit_e="0" limit_l="0" limit_u="0" limit_v="0" />   -->
+  <m_link_mesh name="${link_07_name}"
+              origin_rpy="0 0 0" origin_xyz="0 -0.0145 -0.03"
+              mass="${arm_mass}"
+              ixx=".1" ixy="0.0" ixz="0.0"
+              iyy=".1" iyz="0.0"
+              izz=".1"
+              meshfile="package://mini_jaguar_pkg/meshes/arm.stl"
+              meshscale="0.004 0.0029 0.003" /> 
+<!--  Arm 3 -->
+  <m_joint_1 name="${link_07_name}__${link_08_name}" type="revolute"
+           axis_xyz="0 1 0"
+            frict="0.5"  
+           damp="0.2"
+           origin_rpy="0 0 0" origin_xyz="0.43 0.025 -0.0145"
+           parent="${link_07_name}" child="${link_08_name}"
+         
+          
+             limit_e="0" limit_l="0" limit_u="0" limit_v="0" />
+              <!-- limit_e="1000" limit_l="-3.14" limit_u="3.14" limit_v="0.5" /> -->
+  <m_link_mesh name="${link_08_name}"
+              origin_rpy="0 0 0" origin_xyz="-0.15  -0.0145 -0.0145"
+              mass="${arm_mass}"
+              ixx=".1" ixy="0.0" ixz="0.0"
+              iyy=".1" iyz="0.0"
+              izz=".1"
+              meshfile="package://mini_jaguar_pkg/meshes/arm.stl"
+              meshscale="0.0025 0.0029 0.003" /> 
+<!--  gripper base  3 -->
+  <m_joint_1 name="${link_08_name}__${link_09_name}" type="revolute"
+           axis_xyz="0 0 1"
+           frict="0.5"
+           damp="0.2"
+           origin_rpy="0 1.57079 0" origin_xyz="0.13 0 0"
+           parent="${link_08_name}" child="${link_09_name}"
+          
+           limit_e="1000" limit_l="-3.14" limit_u="3.14" limit_v="0.5" />
+ <!-- limit_e="0" limit_l="0" limit_u="0" limit_v="0" /> -->
+  <m_link_cylinder name="${link_09_name}" 
+              origin_rpy="0 0 0" origin_xyz="0 0 0"
+              mass="${arm_mass}"
+              ixx=".1" ixy="0.0" ixz="0.0"
+              iyy=".1" iyz="0.0"
+              izz=".1"
+              radius='.015' length='0.01'/>  
+<!--  gripper arm  10 -->
+  <m_joint_1 name="${link_09_name}__${link_10_name}" type="revolute"
+           axis_xyz="1 0 0"
+           frict="0.5"
+           damp="0.2"
+           origin_rpy="0 0 0" origin_xyz="0 0.018 0.01"
+           parent="${link_09_name}" child="${link_10_name}"
+           limit_e="1000" limit_l="-0.35" limit_u="0.35" limit_v="0.5" />
+           
+   <m_link_box name="${link_10_name}" 
+              origin_rpy="0 0 0" origin_xyz="0 0 0.02"
+              mass="${arm_mass}"
+              ixx=".1" ixy="0.0" ixz="0.0"
+              iyy=".1" iyz="0.0"
+              izz=".1"
+              size='0.02 0.005 0.05'/>  
+<!--  gripper arm  11 -->
+  <m_joint_1 name="${link_09_name}__${link_11_name}" type="revolute"
+           axis_xyz="1 0 0"
+           frict="0.5"
+           damp="0.2"
+           origin_rpy="0 0 3.14" origin_xyz="0 -0.018 0.01"
+           parent="${link_09_name}" child="${link_11_name}"
+           limit_e="1000" limit_l="-0.35" limit_u="0.35" limit_v="0.5" />
+           
+   <m_link_box name="${link_11_name}" 
+              origin_rpy="0 0 0" origin_xyz="0 0 0.02"
+              mass="${arm_mass}"
+              ixx=".1" ixy="0.0" ixz="0.0"
+              iyy=".1" iyz="0.0"
+              izz=".1"
+              size='0.02 0.005 0.05'/>  
+
+</robot>

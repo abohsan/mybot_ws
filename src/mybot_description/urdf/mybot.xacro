@@ -7,9 +7,9 @@
   <xacro:include filename="$(find mybot_description)/urdf/parameter.xacro" />
   <xacro:include filename="$(find mybot_description)/urdf/mybot.gazebo" />
   <xacro:include filename="$(find mybot_description)/urdf/materials.xacro" />
-  <xacro:include filename="$(find mybot_description)/parts/velodyne.xacro" />
+  <!-- <xacro:include filename="$(find mybot_description)/parts/velodyne.xacro" /> -->
   <xacro:include filename="$(find mybot_description)/parts/wheels.xacro" />
-  <xacro:include filename="$(find mybot_description)/parts/cameras.xacro" /> 
+  <!-- <xacro:include filename="$(find mybot_description)/parts/cameras.xacro" />  -->
   <xacro:include filename="$(find mybot_description)/parts/lidar_2d.xacro" /> 
 
   <link name="base_link">
@@ -25,7 +25,7 @@
     <pose>0 0 0.1 0 0 0</pose>
 
     <inertial>
-      <mass value="15.0"/>
+      <mass value="${chassis_mass}"/>
       <origin xyz="0.0 0 0.1" rpy=" 0 0 0"/>
       <inertia
           ixx="0.1" ixy="0" ixz="0"

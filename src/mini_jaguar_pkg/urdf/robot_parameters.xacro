@@ -1,0 +1,71 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:property name="dummy_link" value="base_link" />
+  <xacro:property name="link_00_name" value="chassis" />
+  <xacro:property name="link_01_name" value="link_01" />
+  <xacro:property name="link_02_name" value="link_02" />
+  <xacro:property name="link_03_name" value="link_03" />
+  <xacro:property name="link_04_name" value="link_04" />
+  <xacro:property name="link_05_name" value="link_05" />
+  <xacro:property name="link_06_name" value="link_06" />
+  <xacro:property name="link_07_name" value="link_07" />
+  <xacro:property name="link_08_name" value="link_08" />
+  <xacro:property name="link_09_name" value="link_09" />
+  <xacro:property name="link_10_name" value="link_10" />
+  <xacro:property name="link_11_name" value="link_11" />
+  <xacro:property name="link_12_name" value="link_12" />
+  <xacro:property name="link_13_name" value="link_13" />
+  <xacro:property name="link_14_name" value="link_14" />
+  <xacro:property name="link_15_name" value="link_15" />
+  
+
+
+
+
+<xacro:property name="chassis_x" value="0" /> 
+<xacro:property name="chassis_y" value="3" />
+<xacro:property name="chassis_z" value="${ 2}" />
+
+<!-- <xacro:property name="off_The_Ground" value="0.01" /> -->
+<xacro:property name="off_The_Ground" value="0.00" />
+
+
+<xacro:property name="chassis_L" value="${0.6858  }" /> 
+<xacro:property name="chassis_W" value="${0.4064 }" />
+<xacro:property name="chassis_H" value="0.1524" />
+
+
+
+
+<xacro:property name="bar_L" value="0.1" /> 
+<xacro:property name="bar_W" value="0.1" />
+<xacro:property name="bar_H" value="0.4" />
+
+<xacro:property name="bar_x" value="${(bar_L + chassis_L)/2 }" /> 
+<xacro:property name="bar_y" value="0" />
+<xacro:property name="bar_z" value="0" />
+
+
+
+<xacro:property name="wheel_R" value="0.16" /> 
+<xacro:property name="wheel_L" value="0.03" />
+<!-- off set the wheel from the chassis -->
+<xacro:property name="wheels_offset" value="0.01" />
+
+
+
+
+<xacro:property name="lidar_x" value="-0.02" />
+<xacro:property name="lidar_y" value="-0.16" />
+<xacro:property name="lidar_z" value="0.03" />
+
+<xacro:property name="ArmBase_x" value="0" />
+<xacro:property name="ArmBase_y" value="0" />
+<xacro:property name="ArmBase_z" value="0" />
+
+<!-- Masses -->
+<xacro:property name="chassis_mass" value="600" />
+<xacro:property name="bar_mass" value="1" />
+<xacro:property name="wheels_mass" value="2" />
+</robot>

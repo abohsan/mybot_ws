@@ -1,0 +1,8 @@
+<launch>
+
+    <include file="$(find mybot_gazebo)/launch/mini.launch"> </include>
+    <include file="$(find mybot_navigation)/launch/gmapping_demo.launch"> </include>
+    <include file="$(find mybot_navigation)/launch/amcl_demo1.launch"> </include>
+    <include file="$(find mini_jaguar_pkg)/launch/rviz.launch"> </include>
+
+</launch>

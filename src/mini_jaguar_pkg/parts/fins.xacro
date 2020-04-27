@@ -1,0 +1,66 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:property name="fin_mass" value="2" />
+
+  <m_joint name="${link_00_name}__${link_12_name}" type="revolute"
+           axis_xyz="0 1 0"
+           origin_rpy="0 0 3.14" origin_xyz="${chassis_L/2 - wheel_R} ${ (chassis_W/2 + wheel_L/2 + wheels_offset + 0.01)} ${chassis_H/2 + off_The_Ground}"
+           parent="${link_00_name}" child="${link_12_name}"
+           limit_e="1000" limit_l="-3.14" limit_u="3.14" limit_v="0.5" />
+
+  <m_link_mesh name="${link_12_name}"
+              origin_rpy="0 0 3.14" origin_xyz="0  -0.0145 -0.0145"
+              mass="${fin_mass}"
+              ixx=".1" ixy="0.0" ixz="0.0"
+              iyy=".1" iyz="0.0"
+              izz=".1"
+              meshfile="package://mini_jaguar_pkg/meshes/arm.stl"
+              meshscale="0.0025 0.0029 0.003" /> 
+
+  <m_joint name="${link_00_name}__${link_13_name}" type="revolute"
+           axis_xyz="0 1 0"
+           origin_rpy="0 0 3.14" origin_xyz="${-(chassis_L/2 - wheel_R)} ${(chassis_W/2 + wheel_L/2 + wheels_offset + 0.01)} ${chassis_H/2 + off_The_Ground }"
+           parent="${link_00_name}" child="${link_13_name}"
+           limit_e="1000" limit_l="-3.14" limit_u="3.14" limit_v="0.5" />
+
+  <m_link_mesh name="${link_13_name}"
+              origin_rpy="0 0 3.14" origin_xyz="0  -0.0145 -0.0145"
+              mass="${fin_mass}"
+              ixx=".1" ixy="0.0" ixz="0.0"
+              iyy=".1" iyz="0.0"
+              izz=".1"
+              meshfile="package://mini_jaguar_pkg/meshes/arm.stl"
+              meshscale="0.0025 0.0029 0.003" /> 
+
+  <m_joint name="${link_00_name}__${link_14_name}" type="revolute"
+           axis_xyz="0 1 0"
+           origin_rpy="0 0 3.14" origin_xyz="${chassis_L/2 - wheel_R} ${-(chassis_W/2 + wheel_L/2 + wheels_offset + 0.01)} ${chassis_H/2 + off_The_Ground }"
+           parent="${link_00_name}" child="${link_14_name}"
+           limit_e="1000" limit_l="-3.14" limit_u="3.14" limit_v="0.5" />
+
+  <m_link_mesh name="${link_14_name}"
+              origin_rpy="0 0 3.14" origin_xyz="0  0.0445 -0.0145"
+              mass="${fin_mass}"
+              ixx=".1" ixy="0.0" ixz="0.0"
+              iyy=".1" iyz="0.0"
+              izz=".1"
+              meshfile="package://mini_jaguar_pkg/meshes/arm.stl"
+              meshscale="0.0025 0.0029 0.003" /> 
+
+  <m_joint name="${link_00_name}__${link_15_name}" type="revolute"
+           axis_xyz="0 1 0"
+           origin_rpy="0 0 3.14" origin_xyz="${-(chassis_L/2 - wheel_R)} ${-(chassis_W/2 + wheel_L/2 + wheels_offset + 0.01)} ${chassis_H/2 + off_The_Ground }"
+           parent="${link_00_name}" child="${link_15_name}"
+           limit_e="1000" limit_l="-3.14" limit_u="3.14" limit_v="0.5" />
+
+  <m_link_mesh name="${link_15_name}"
+              origin_rpy="0 0 3.14" origin_xyz="0  0.0445 -0.0145"
+              mass="${fin_mass}"
+              ixx=".1" ixy="0.0" ixz="0.0"
+              iyy=".1" iyz="0.0"
+              izz=".1"
+              meshfile="package://mini_jaguar_pkg/meshes/arm.stl"
+              meshscale="0.0025 0.0029 0.003" /> 
+
+</robot>

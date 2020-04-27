@@ -1,0 +1,17 @@
+<launch>
+
+  <!-- <node pkg="joy" type="joy_node" name="joy_node"> </node> -->
+
+<node pkg="joy_stick" name="joy_node" type="joy_node"/>
+
+<!-- Axes -->
+ <param name="axis_linear" value="1" type="int"/>
+ <param name="axis_angular" value="0" type="int"/>
+ <param name="scale_linear" value="2" type="double"/>
+ <param name="scale_angular" value="2" type="double"/>
+ <param name="axis_deadman" value="4" type="int"/>
+
+<node pkg="joy_stick" name="my_joy_node" type="my_joy_node"/>
+
+</launch>
+
