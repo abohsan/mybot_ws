@@ -1,6 +1,9 @@
 <?xml version='1.0'?>
 
 <robot name="myrobot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  
+  <xacro:include filename="$(find mini_jaguar_pkg)/gazebo_plugin/camera.gazebo" />
+
 
  <xacro:property name="base_line" value="chassis"/>
  <xacro:property name="cameraWidth" value="0.01"/>

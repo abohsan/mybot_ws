@@ -1,30 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <launch>
 
-<!-- these are the arguments you can pass this launch file, for example paused:=true -->
-<arg name="paused" default="false"/>
-<arg name="use_sim_time" default="true"/>
-<arg name="gui" default="true"/>
-<arg name="headless" default="false"/>
-<arg name="debug" default="false"/>
-<arg name="model" default="$(find mini_jaguar_pkg)/urdf/mini.xacro"/>
-<!-- We resume the logic in empty_world.launch -->
+  <arg name="world" default="empty"/> 
+  <arg name="paused" default="false"/>
+  <arg name="use_sim_time" default="true"/>
+  <arg name="gui" default="true"/>
+  <arg name="headless" default="false"/>
+  <arg name="debug" default="false"/>
+  <arg name="model" default="$(find mini_jaguar_pkg)/urdf/mini.xacro"/>
 
-<include file="$(find gazebo_ros)/launch/empty_world.launch">
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <!-- <arg name="world_name" value="$(find mybot_gazebo)/worlds/costum2.world"/> -->
     <arg name="world_name" value="$(find mybot_gazebo)/worlds/closed_room.world"/>
-    <arg name="debug" value="$(arg debug)" />
-    <arg name="gui" value="$(arg gui)" />
+    <!-- <arg name="world_name" value="$(find mybot_gazebo)/worlds/turtlebot_playground.world"/> -->
     <arg name="paused" value="$(arg paused)"/>
     <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+    <arg name="gui" value="$(arg gui)"/>
     <arg name="headless" value="$(arg headless)"/>
-</include>
-
-<!-- Load the URDF into the ROS Parameter Server -->
-
-<param name="robot_description" command="$(find xacro)/xacro.py $(arg model)"/>
-
-<!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
-
-<node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
-  args="-z 1.0 -unpause -urdf -model Diff_Drive -param robot_description"/>
+    <arg name="debug" value="$(arg debug)"/>
+  </include>
  
+    <rosparam file="$(find mini_jaguar_pkg)/config/control/robot_arm_control.yaml" command="load"/>
+
+  <node name="jaguar_controller_spawner" pkg="controller_manager" type="spawner"
+  respawn="true" output="screen"  
+            args="/jaguar_controller/joint_state_controller
+                  /jaguar_controller/base_position_controller
+                  /jaguar_controller/arm_1_position_controller
+                  /jaguar_controller/arm_2_position_controller
+                  /jaguar_controller/arm_3_position_controller
+                  /jaguar_controller/arm_4_position_controller
+            "/>
+
+
+  <param name="robot_description" command="$(find xacro)/xacro '$(find mini_jaguar_pkg)/urdf/mini.xacro'"/>
+
+  <node name="mybot_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
+   args="-urdf -param robot_description -model min" />
+
 </launch>

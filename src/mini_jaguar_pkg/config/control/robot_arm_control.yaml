@@ -1,0 +1,31 @@
+jaguar_controller:
+  # Publish all joint states -----------------------------------
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+
+  # Position Controllers ---------------------------------------
+  base_position_controller:
+    type: position_controllers/JointPositionController
+    joint: chassis__link_01
+  arm_1_position_controller:
+    type: position_controllers/JointPositionController
+    joint: link_01__link_06
+  arm_2_position_controller:
+    type: position_controllers/JointPositionController
+    joint: link_06__link_07
+  arm_3_position_controller:
+    type: position_controllers/JointPositionController
+    joint: link_07__link_08
+  arm_4_position_controller:
+    type: position_controllers/JointPositionController
+    joint: link_08__link_09
+
+gazebo_ros_control/pid_gains:
+  chassis__link_01: {p: 100.0, i: 0.01, d: 10.0}
+  link_01__link_06: {p: 100.0, i: 0.01, d: 10.0}
+  link_06__link_07: {p: 100.0, i: 0.01, d: 10.0}
+  link_07__link_08: {p: 100.0, i: 0.01, d: 10.0}
+  link_08__link_09: {p: 100.0, i: 0.01, d: 10.0}
+  link_09__link_10: {p: 100.0, i: 0.01, d: 10.0}
+  link_09__link_11: {p: 100.0, i: 0.01, d: 10.0}

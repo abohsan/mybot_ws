@@ -1,6 +1,11 @@
 <?xml version='1.0'?>
 
 <robot name="myrobot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+
+  <xacro:include filename="$(find mini_jaguar_pkg)/gazebo_plugin/lidar.gazebo" />
+
+
   <joint name="hokuyo_joint" type="fixed">
     <axis xyz="0 1 0" />
     <origin xyz="${chassis_L/2 + lidar_x} ${lidar_y} ${off_The_Ground + chassis_H + lidar_z}" rpy="0 0 0"/>

@@ -1,0 +1,24 @@
+# Robot_Arm:
+#   Robot_arm_joint_controller:
+#       type: "position_controllers/JointTrajectoryController"
+#       joints:
+#         - chassis__link_01
+#         - link_01__link_06
+#         - link_06__link_07
+#         - link_07__link_08
+#       gains:
+#         chassis__link_01:   {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0} 
+#         link_01__link_06:   {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
+#         link_06__link_07:   {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
+#         link_07__link_08:   {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
+
+  # gripper_controller:
+  #     type: "position_controllers/JointTrajectoryController"
+  #     joints:
+  #       - link_09__link_10
+  #       - link_09__link_11
+    
+  #     gains:
+  #       link_09__link_10:  {p: 50.0, i: 0.01, d: 1.0, i_clamp: 1.0}
+  #       link_09__link_11: {p: 50.0, i: 0.01, d: 1.0, i_clamp: 1.0}
+ 

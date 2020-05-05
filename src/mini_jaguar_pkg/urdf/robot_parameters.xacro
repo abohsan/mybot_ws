@@ -30,12 +30,9 @@
 <!-- <xacro:property name="off_The_Ground" value="0.01" /> -->
 <xacro:property name="off_The_Ground" value="0.00" />
 
-
 <xacro:property name="chassis_L" value="${0.6858  }" /> 
-<xacro:property name="chassis_W" value="${0.4064 }" />
-<xacro:property name="chassis_H" value="0.1524" />
-
-
+<xacro:property name="chassis_W" value="${0.4064  }" />
+<xacro:property name="chassis_H" value="${0.1524   }" />
 
 
 <xacro:property name="bar_L" value="0.1" /> 
@@ -62,10 +59,10 @@
 
 <xacro:property name="ArmBase_x" value="0" />
 <xacro:property name="ArmBase_y" value="0" />
-<xacro:property name="ArmBase_z" value="0" />
+<xacro:property name="ArmBase_z" value="0.01" />
 
 <!-- Masses -->
-<xacro:property name="chassis_mass" value="600" />
+<xacro:property name="chassis_mass" value="100" />
 <xacro:property name="bar_mass" value="1" />
-<xacro:property name="wheels_mass" value="2" />
+<xacro:property name="wheels_mass" value="20" />
 </robot>

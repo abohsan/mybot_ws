@@ -10,11 +10,12 @@
 
    <xacro:include filename="$(find mini_jaguar_pkg)/parts/wheels.xacro" />
    <xacro:include filename="$(find mini_jaguar_pkg)/parts/lidar_2d.xacro" />
-   <xacro:include filename="$(find mini_jaguar_pkg)/parts/velodyne.xacro" />
+   <!-- <xacro:include filename="$(find mini_jaguar_pkg)/parts/velodyne.xacro" /> -->
    <xacro:include filename="$(find mini_jaguar_pkg)/parts/arm.xacro" />
    <!-- <xacro:include filename="$(find mini_jaguar_pkg)/parts/fins.xacro" />  -->
 
-  <xacro:include filename="$(find mini_jaguar_pkg)/urdf/mini.gazebo" />
+
+  <xacro:include filename="$(find mini_jaguar_pkg)/gazebo_plugin/genral.gazebo" />
 
   <!-- END - Include -->
   <link name="${dummy_link}">
