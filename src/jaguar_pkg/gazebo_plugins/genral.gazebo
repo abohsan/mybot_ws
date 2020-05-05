@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<robot>
+<!-- chassis color -->
+  <gazebo reference="${link_00_name}">
+    <material>Gazebo/Orange</material>
+  </gazebo>
+
+    <gazebo>
+      <plugin name="gazebo_ros_control" filename= "libgazebo_ros_control.so">
+      <robotNamespace>/</robotNamespace>
+      </plugin>
+    </gazebo>
+
+</robot>

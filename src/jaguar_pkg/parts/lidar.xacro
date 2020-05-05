@@ -1,0 +1,38 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+
+<!-- include gazebo plugins -->
+ <xacro:include filename="$(find jaguar_pkg)/gazebo_plugins/lidar.gazebo" />
+
+
+
+ <joint name="rplidar_joint" type="fixed">
+    <axis xyz="0 0 0" />
+    <origin xyz="${chassis_L/2 + lidar_x} ${lidar_y} ${(wheel_R + chassis_H/2 + lidar_z) }" rpy="0 0 0"/>
+    <parent link="${link_00_name}"/>
+    <child link="${link_lidar}"/>
+  </joint>
+  <!-- rplidar Laser  -->
+    <link name="${link_lidar}">
+    <collision>
+      <origin xyz="0 0 ${-0.03 * scale_all}" rpy="1.57 0 0"/>
+      <geometry>
+     <mesh filename="${the_meshfile}/rplidar.dae" scale="${lidar_scale} ${lidar_scale} ${lidar_scale}"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <origin xyz="0 0 ${-0.03 * scale_all}" rpy="1.57 0 0"/>
+      <geometry>
+        <mesh filename="${the_meshfile}/rplidar.dae" scale="${lidar_scale} ${lidar_scale} ${lidar_scale}"/>
+      </geometry>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 -0.03" rpy="1.57 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+</robot>

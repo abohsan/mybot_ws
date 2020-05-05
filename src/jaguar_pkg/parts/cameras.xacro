@@ -1,0 +1,166 @@
+<?xml version='1.0'?>
+
+<robot name="myrobot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<!-- include gazebo plugins -->
+ <xacro:include filename="$(find jaguar_pkg)/gazebo_plugins/camera.gazebo" />
+
+ <xacro:property name="base_line" value="chassis"/>
+ <xacro:property name="cameraWidth" value="0.01"/>
+ <xacro:property name="cameraLength" value="0.09"/>
+ <xacro:property name="cameraHight" value="0.05"/>
+ <xacro:property name="cameraMass" value="0.1"/>
+
+  <xacro:property name="camera_f_x" value="0"/>
+  <xacro:property name="camera_f_y" value="0"/>
+  <xacro:property name="camera_f_z" value="0"/>
+
+  <xacro:property name="camera_r_x" value="0"/>
+  <xacro:property name="camera_r_y" value="0"/>
+  <xacro:property name="camera_r_z" value="0"/>
+
+  <xacro:property name="camera_l_x" value="0"/>
+  <xacro:property name="camera_l_y" value="0"/>
+  <xacro:property name="camera_l_z" value="0"/>
+
+  <xacro:property name="camera_b_x" value="0"/>
+  <xacro:property name="camera_b_y" value="0"/>
+  <xacro:property name="camera_b_z" value="0"/>
+
+  <xacro:property name="orig_x" value="${chassis_x + bar_x}"/>
+  <xacro:property name="orig_y" value="${chassis_y + bar_y}"/>
+  <xacro:property name="orig_z" value="${chassis_z +chassis_H/2 + bar_H + bar_z - cameraHight/2 }"/>
+
+
+    <link name="camera_front">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="${cameraWidth} ${cameraLength} ${cameraHight}"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="${cameraWidth} ${cameraLength} ${cameraHight}"/>
+      </geometry>
+      <material name="green"/>
+    </visual>
+
+    <inertial>
+      <mass value="${cameraMass}" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <box_inertia m="${cameraMass}" x="${cameraWidth}" y="${cameraLength}" z="${cameraHight}" />
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+
+  <joint name="camera_front_joint" type="fixed">
+    <axis xyz="0 1 0" />
+    <origin xyz="${orig_x + bar_L/2 + cameraWidth/2 + camera_f_x} ${orig_y  +  camera_f_y}  ${orig_z + camera_f_z}" rpy="0 0 0"/>
+    <parent link="${base_line}"/>
+    <child link="camera_front"/>
+  </joint>
+
+  <link name="camera_back">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="${cameraWidth} ${cameraLength} ${cameraHight}"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="${cameraWidth} ${cameraLength} ${cameraHight}"/>
+      </geometry>
+      <material name="green"/>
+    </visual>
+
+    <inertial>
+      <mass value="${cameraMass}" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <box_inertia m="${cameraMass}" x="${cameraWidth}" y="${cameraLength}" z="${cameraHight}" />
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+
+  <joint name="camera_back_joint" type="fixed">
+    <axis xyz="0 0 0" />
+    <origin xyz="${orig_x - bar_L/2 - cameraWidth/2 + camera_b_x} ${orig_y+ camera_b_y}  ${orig_z + camera_b_z}" 
+      rpy="0 0 3.14"/>
+    <parent link="${base_line}"/>
+    <child link="camera_back"/>
+  </joint>
+
+
+
+  <link name="camera_right">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="${cameraWidth} ${cameraLength} ${cameraHight}"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="${cameraWidth} ${cameraLength} ${cameraHight}"/>
+      </geometry>
+      <material name="green"/>
+    </visual>
+
+    <inertial>
+      <mass value="${cameraMass}" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <box_inertia m="${cameraMass}" x="${cameraWidth}" y="${cameraLength}" z="${cameraHight}" />
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+
+  <joint name="camera_right_joint" type="fixed">
+    <axis xyz="0 0 0" />
+    <origin xyz="${orig_x + camera_r_x} ${orig_y - cameraWidth/2 - bar_W/2 + camera_r_y }  ${orig_z + camera_r_z}" 
+    rpy="0 0 -1.57"/>
+    <parent link="${base_line}"/>
+    <child link="camera_right"/>
+  </joint>
+
+
+  <link name="camera_left">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="${cameraWidth} ${cameraLength} ${cameraHight}"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="${cameraWidth} ${cameraLength} ${cameraHight}"/>
+      </geometry>
+      <material name="green"/>
+    </visual>
+
+    <inertial>
+      <mass value="${cameraMass}" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <box_inertia m="${cameraMass}" x="${cameraWidth}" y="${cameraLength}" z="${cameraHight}" />
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+
+  <joint name="camera_left_joint" type="fixed">
+    <axis xyz="0 0 0" />
+    <origin xyz="${chassis_x + bar_x + camera_l_x} ${orig_y + cameraWidth/2 + bar_W/2 + camera_l_y}  ${orig_z + camera_l_z}" 
+    rpy="0 0 1.57"/>
+    <parent link="${base_line}"/>
+    <child link="camera_left"/>
+  </joint>
+
+</robot>
+

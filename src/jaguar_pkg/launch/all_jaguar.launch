@@ -1,0 +1,8 @@
+<launch>
+
+    <include file="$(find jaguar_pkg)/launch/gazebo.launch"> </include>
+    <include file="$(find jaguar_pkg)/launch/gmapping.launch"> </include>
+    <include file="$(find jaguar_pkg)/launch/amcl.launch"> </include>
+    <include file="$(find jaguar_pkg)/launch/jaguar.launch"> </include>
+
+</launch>

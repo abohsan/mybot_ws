@@ -1,0 +1,16 @@
+obstacle_range: 1.0
+raytrace_range: 1.0
+footprint: [[-0.43, -0.25], [-0.43, 0.25], [0.35, 0.25], [0.35, -0.25]]
+#robot_radius: ir_of_robot
+#robot_radius: 0.5 # distance a circular robot should be clear of the obstacle
+footprint_padding: -0.06
+inflation_radius: 0.2
+
+#observation_sources: point_cloud_sensor 
+observation_sources: laser_scan_sensor
+
+# marking - add obstacle information to cost map
+# clearing - clear obstacle information to cost map
+laser_scan_sensor: {sensor_frame: hokuyo, data_type: LaserScan, topic: /mybot/laser/scan, marking: true, clearing: true}
+
+#point_cloud_sensor: {sensor_frame: velodyne, data_type: PointCloud, topic: /velodyne_points, marking: true, clearing: true}

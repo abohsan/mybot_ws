@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<robot>
+
+  <gazebo>
+    <plugin name="skid_steer_drive_controller" filename="libgazebo_ros_skid_steer_drive.so">
+      <updateRate>10.0</updateRate>
+      <robotNamespace>/</robotNamespace>
+      <leftFrontJoint>${link_00_name}__${link_02_name}</leftFrontJoint>
+      <rightFrontJoint>${link_00_name}__${link_03_name}</rightFrontJoint>
+      <leftRearJoint>${link_00_name}__${link_05_name} </leftRearJoint>
+      <rightRearJoint>${link_00_name}__${link_04_name}</rightRearJoint>
+      <wheelSeparation>${wheel_R * 2}</wheelSeparation>
+      <wheelDiameter>${chassis_W + wheels_offset + wheel_L/2 }</wheelDiameter>
+      <robotBaseFrame>${dummy_link}</robotBaseFrame>
+      <torque>${300 * scale_all}</torque>
+      <topicName>cmd_vel</topicName>
+      <broadcastTF>true</broadcastTF>
+    </plugin>
+  </gazebo>
+
+  <gazebo reference="${link_02_name}">
+    <material>Gazebo/Blue</material>
+  </gazebo>
+
+  <gazebo reference="${link_03_name}">
+    <material>Gazebo/Blue</material>
+  </gazebo>
+
+  <gazebo reference="${link_04_name}">
+    <material>Gazebo/Blue</material>
+  </gazebo>
+
+  <gazebo reference="${link_05_name}">
+    <material>Gazebo/Blue</material>
+  </gazebo>
+
+  <gazebo reference="${link_lidar}">
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+</robot>
