@@ -1,9 +1,11 @@
 <?xml version="1.0" ?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
+<xacro:property name="joint_friction" value="5"/>
+
 <m_joint_1 name="${link_00_name}__${link_01_name}" type="revolute"
            axis_xyz="0 0 1"
-           damp="0.2" frict="50"
+           damp="0.2" frict="${joint_friction}"
            origin_rpy="0 0 0" origin_xyz="${0.13 * arm_scale_x }  ${0 * arm_scale_y } ${0.27 * arm_scale_z }"
            parent="${link_00_name}" child="${link_01_name}"
            limit_e="1000" limit_l="-1.5708" limit_u="1.5708" limit_v="0.5" />
@@ -17,8 +19,9 @@
               meshfile="${the_meshfile}/Arm_Base_scaled.dae"
               meshscale="${arm_scale_x} ${arm_scale_y} ${arm_scale_z}" />  
 
- <m_joint name="${link_01_name}__${link_06_name}" type="revolute"
+ <m_joint_1 name="${link_01_name}__${link_06_name}" type="revolute"
            axis_xyz="0 1 0"
+           damp="0.2" frict="${joint_friction}"
            origin_rpy="0 0.05 0" origin_xyz="${0.1 * arm_scale_x } ${0.039  * arm_scale_y } ${0.12 * arm_scale_z}"
            parent="${link_01_name}" child="${link_06_name}"
            limit_e="1000" limit_l="0" limit_u="3.14" limit_v="0.5" />
@@ -32,8 +35,9 @@
               meshfile="${the_meshfile}/Arm_1_scaled.dae"
               meshscale="${arm_scale_x} ${arm_scale_y} ${arm_scale_z}" />   
               
-    <m_joint name="${link_06_name}__${link_07_name}" type="revolute"
+  <m_joint_1 name="${link_06_name}__${link_07_name}" type="revolute"
            axis_xyz="0 1 0"
+           damp="0.2" frict="${joint_friction}"
            origin_rpy="0 0 3.14" origin_xyz="${-0.46 * arm_scale_x } ${-0.1275 * arm_scale_y } ${0 * arm_scale_z }"
            parent="${link_06_name}" child="${link_07_name}"
            limit_e="1000" limit_l="0" limit_u="3.14" limit_v="0.5" />
@@ -47,8 +51,9 @@
               meshfile="${the_meshfile}/Arm_2_scaled.dae"
               meshscale="${arm_scale_x} ${arm_scale_y} ${arm_scale_z}" /> 
 
-  <m_joint name="${link_07_name}__${link_08_name}" type="revolute"
+  <m_joint_1 name="${link_07_name}__${link_08_name}" type="revolute"
            axis_xyz="0 1 0"
+           damp="0.2" frict="${joint_friction}"
            origin_rpy="0 0 0" origin_xyz="${-0.43 * arm_scale_x } ${-0.044 * arm_scale_y } ${0.14 * arm_scale_z }"
            parent="${link_07_name}" child="${link_08_name}"
            limit_e="1000" limit_l="0" limit_u="0" limit_v="0" />
@@ -62,8 +67,9 @@
               meshfile="${the_meshfile}/Arm_3_scaled.dae"
               meshscale="${arm_scale_x} ${arm_scale_y} ${arm_scale_z}" /> 
  
-  <m_joint name="${link_08_name}__${link_09_name}" type="revolute"
+  <m_joint_1 name="${link_08_name}__${link_09_name}" type="revolute"
            axis_xyz="1 0 0"
+           damp="0.2" frict="${joint_friction}"
            origin_rpy="0 -0.18 3.14" origin_xyz="${-0.08 * arm_scale_x } ${-0.0346 * arm_scale_y } ${0.014 * arm_scale_z }"
            parent="${link_08_name}" child="${link_09_name}"
            limit_e="1000" limit_l="-3.14" limit_u="3.14" limit_v="0.5" />

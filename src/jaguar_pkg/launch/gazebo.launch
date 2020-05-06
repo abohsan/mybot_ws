@@ -18,12 +18,18 @@
   
   
 
-<rosparam file="$(find jaguar_pkg)/config/joint_states.yaml" command="load"/>
+<rosparam file="$(find jaguar_pkg)/config/control/joint_states.yaml" command="load"/>
+<rosparam file="$(find jaguar_pkg)/config/control/arm_joint_control.yaml" command="load"/>
 
-<node name="jaguar_controller_spawner" pkg="controller_manager" type="spawner"
+<node name="jaguar_arm_controller_spawner" pkg="controller_manager" type="spawner"
   respawn="true" output="screen" 
    args="/Diff_Drive/joint_state_controller
-        --shutdown-timeout 3"/>
+       /jaguar_arm_controller/base_position_controller
+       /jaguar_arm_controller/arm_1_position_controller
+       /jaguar_arm_controller/arm_2_position_controller
+       /jaguar_arm_controller/arm_3_position_controller
+       /jaguar_arm_controller/arm_4_position_controller
+       "/>
 
 <param name="robot_description" command="$(find xacro)/xacro '$(find jaguar_pkg)/urdf/jaguar.xacro'"/>
 

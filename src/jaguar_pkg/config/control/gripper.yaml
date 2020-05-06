@@ -1,0 +1,8 @@
+# Robot_Arm:
+#   Gripper_controller:
+#     type: "position_controllers/JointGroupPositionController"
+#     joints:
+#       - link_09__link_10
+#       - link_09__link_11
+
+ 
