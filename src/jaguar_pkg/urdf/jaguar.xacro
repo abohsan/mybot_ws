@@ -7,38 +7,55 @@
   <!-- Begin - Include parts-->
   
    <!-- <xacro:include filename="$(find jaguar_pkg)/parts/tankWheel.xacro" />  -->
-  <xacro:include filename="$(find jaguar_pkg)/parts/fins.xacro" />  
+  <!-- <xacro:include filename="$(find jaguar_pkg)/parts/fins.xacro" />   -->
   <xacro:include filename="$(find jaguar_pkg)/parts/wheels.xacro" /> 
   <xacro:include filename="$(find jaguar_pkg)/parts/arm.xacro" />
-
   <xacro:include filename="$(find jaguar_pkg)/parts/velodyne.xacro" />
-
-  <xacro:include filename="$(find jaguar_pkg)/parts/lidar.xacro" /> 
-
-  <xacro:include filename="$(find jaguar_pkg)/gazebo_plugins/genral.gazebo" /> 
+  <xacro:include filename="$(find jaguar_pkg)/parts/lidar.xacro" />
+  <xacro:include filename="$(find jaguar_pkg)/gazebo_plugins/genral.gazebo" />  
   
   <!-- END - Include parts-->
-
   <link name="${dummy_link}"></link>
-
   <joint name="${dummy_link}__${link_00_name}" type="fixed">
     <parent link="${dummy_link}"/>
     <child link="${link_00_name}"/>
   </joint>
 
-  <m_link_mesh name="${link_00_name}"
+  <m_link_mesh_box name="${link_00_name}"
               origin_rpy="0 0 0" origin_xyz="0 0 ${wheel_R}"
               mass="${chassis_mass}"
               ixx="0.1" ixy="0" ixz="0"
               iyy="0.1" iyz="0"
               izz="0.1"
+              collisionn="${chassis_L} ${chassis_W} ${chassis_H}"
               meshfile="${the_meshfile}/jaguar_base.dae"
               meshscale="${chassis_scale_x} ${chassis_scale_y} ${chassis_scale_z}"/> 
 
 
 
+  <!-- <joint name="${dummy_link}__${link_00_name}_1" type="fixed">
+    <parent link="${dummy_link}"/>
+    <child link="${link_00_name}_1"/>
+  </joint>
 
-
-
-
+  <link name="${link_00_name}_1" >
+    <visual>
+          <origin xyz="0 0 ${wheel_R}"/>
+      <geometry>
+        <box size="${chassis_L} ${chassis_W} ${chassis_H}" />
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="${chassis_L} ${chassis_W} ${chassis_H}" />
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 ${wheel_R}"/>
+      <mass value="${tail_mass}"/>
+      <inertia ixx="3.0" ixy="0.0" ixz="0.0"
+               iyy="3.0" iyz="0.0" 
+               izz="3.0" />
+    </inertial>
+  </link> -->
 </robot>

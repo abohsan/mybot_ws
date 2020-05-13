@@ -4,10 +4,10 @@
   <xacro:property name="dummy_link" value="base_link" />
   <xacro:property name="link_00_name" value="chassis" />
   <xacro:property name="link_01_name" value="base_arm" />
-  <xacro:property name="link_02_name" value="wheel_front_left" />
-  <xacro:property name="link_03_name" value="wheel_front_right" />
-  <xacro:property name="link_04_name" value="wheel_back_right" />
-  <xacro:property name="link_05_name" value="wheel_back_left" />
+  <xacro:property name="link_02_name" value="wheel_left_front" />
+  <xacro:property name="link_03_name" value="wheel_right_front" />
+  <xacro:property name="link_04_name" value="wheel_right_back" />
+  <xacro:property name="link_05_name" value="wheel_left_back" />
   <xacro:property name="link_06_name" value="arm_1" />
   <xacro:property name="link_07_name" value="arm_2" />
   <xacro:property name="link_08_name" value="arm_3" />
@@ -49,9 +49,9 @@
  
 
   <xacro:property name="off_The_Ground" value="0.01" />
-  <xacro:property name="chassis_L" value="${0.6858  *  chassis_scale_x }" /> 
-  <xacro:property name="chassis_W" value="${0.4064  *  chassis_scale_y }" /> 
-  <xacro:property name="chassis_H" value="${0.1524  *  chassis_scale_z }" />
+  <xacro:property name="chassis_L" value="${ 0.6858  *  chassis_scale_x }" /> 
+  <xacro:property name="chassis_W" value="${ 0.4064  *  chassis_scale_y }" /> 
+  <xacro:property name="chassis_H" value="${ 0.1524  *  chassis_scale_z }" />
   
 
   <xacro:property name="wheel_R" value="${0.0545 * wheel_scale_r}" /> 
@@ -60,19 +60,20 @@
   <xacro:property name="fin_w" value="${0.03 * fin_scale_y}" /> 
   <!-- off set the wheel from the chassis -->
   <xacro:property name="wheels_offset" value="0.001" />
+  <xacro:property name="fins_offset" value="0.001" />
 
  
 
 
   <xacro:property name="lidar_x" value="0" />
  <xacro:property name="lidar_y" value="${ - chassis_W/2 + (0.04 * scale_all) }"/>
-  <xacro:property name="lidar_z" value="${0.02 * scale_all}" />
+  <xacro:property name="lidar_z" value="${0.03 * scale_all}" />
 
   <!-- Masses -->
-  <xacro:property name="chassis_mass" value="${ 100 * scale_all }" />
-  <xacro:property name="wheels_mass" value="${ 10 * scale_all }" /> 
-  <xacro:property name="fins_mass" value="${ 10 * scale_all }" /> 
-  <xacro:property name="arm_mass" value="${ 5 * scale_all }" /> 
-  <xacro:property name="tail_mass" value="${ 10 * scale_all }" /> 
+  <xacro:property name="chassis_mass" value="${ 100  }" />
+  <xacro:property name="wheels_mass" value="${ 1 * scale_all }" /> 
+  <xacro:property name="fins_mass" value="${ 1 * scale_all }" /> 
+  <xacro:property name="arm_mass" value="${ 1 * scale_all }" /> 
+  <xacro:property name="tail_mass" value="${ 1 * scale_all }" /> 
   
 </robot>

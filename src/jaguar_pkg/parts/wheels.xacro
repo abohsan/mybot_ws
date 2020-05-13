@@ -1,11 +1,13 @@
 <?xml version="1.0" ?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+<robot  name="jaguar" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
 <!-- include gazebo plugins -->
  <xacro:include filename="$(find jaguar_pkg)/gazebo_plugins/wheels.gazebo" />
 
   <xacro:property name="_x" value="${chassis_L/2 - wheel_R}" /> <!-- 0.27 -->
   
+
+  <!-- left front wheel -->
   <m_joint name="${link_00_name}__${link_02_name}" type="continuous"
            axis_xyz="0 1 0"
            origin_rpy="0 0 0" origin_xyz="${_x} ${ chassis_W/2 + wheel_L + wheels_offset} ${wheel_R}"
@@ -13,57 +15,67 @@
            limit_e="1000" limit_l="-3.14" limit_u="3.14" limit_v="0.5"  />
 
             
-  <m_link_mesh name="${link_02_name}"
+  <m_link_mesh_cylinder name="${link_02_name}"
               origin_rpy="0 0 0" origin_xyz="0 0 0"
               mass="${wheels_mass}"
               ixx="0.1" ixy="0" ixz="0"
               iyy="0.1" iyz="0"
               izz="0.1"
+              collision_origin_rpy="0 1.57079 1.57079" 
+              collisionn_radius="${wheel_R}" collisionn_length="${wheel_L + wheel_L*.45 }"
               meshfile="${the_meshfile}/wheel.dae"
               meshscale="${wheel_scale_r} ${wheel_scale_l} ${wheel_scale_r}"/> 
+       
 
+<!-- right front wheel -->
     <m_joint name="${link_00_name}__${link_03_name}" type="continuous"
            axis_xyz="0 1 0"
            origin_rpy="0 0 0" origin_xyz="${_x}  ${ -(chassis_W/2 + wheel_L + wheels_offset)} ${wheel_R}"
            parent="${link_00_name}" child="${link_03_name}"
            limit_e="1000" limit_l="-3.14" limit_u="3.14" limit_v="0.5" />
            
-    <m_link_mesh name="${link_03_name}"
-                origin_rpy="0 0 0" origin_xyz="0 0 0"
-                mass="${wheels_mass}"
+    <m_link_mesh_cylinder name="${link_03_name}"
+              origin_rpy="0 0 0" origin_xyz="0 0 0"
+              mass="${wheels_mass}"
               ixx="0.1" ixy="0" ixz="0"
               iyy="0.1" iyz="0"
               izz="0.1"
-                meshfile="${the_meshfile}/wheel.dae"
-                meshscale="${wheel_scale_r} ${wheel_scale_l} ${wheel_scale_r}" /> 
-
+              collision_origin_rpy="0 1.57079 1.57079" 
+              collisionn_radius="${wheel_R}" collisionn_length="${wheel_L + wheel_L*.45 }"
+              meshfile="${the_meshfile}/wheel.dae"
+              meshscale="${wheel_scale_r} ${wheel_scale_l} ${wheel_scale_r}" /> 
+<!-- right back wheel -->
     <m_joint name="${link_00_name}__${link_04_name}" type="continuous"
            axis_xyz="0 1 0"
            origin_rpy="0 0 0" origin_xyz="${ - _x}  ${ -(chassis_W/2 + wheel_L + wheels_offset)} ${wheel_R}"
            parent="${link_00_name}" child="${link_04_name}"
            limit_e="1000" limit_l="-3.14" limit_u="3.14" limit_v="0.5" />
            
-  <m_link_mesh name="${link_04_name}"
+  <m_link_mesh_cylinder name="${link_04_name}"
               origin_rpy="0 0 0" origin_xyz="0 0 0"
               mass="${wheels_mass}"
               ixx="0.1" ixy="0" ixz="0"
               iyy="0.1" iyz="0"
               izz="0.1"
+              collision_origin_rpy="0 1.57079 1.57079" 
+              collisionn_radius="${wheel_R}" collisionn_length="${wheel_L + wheel_L*.45 }"
               meshfile="${the_meshfile}/wheel.dae"
               meshscale="${wheel_scale_r} ${wheel_scale_l} ${wheel_scale_r}" /> 
-
+<!-- left back wheel -->
       <m_joint name="${link_00_name}__${link_05_name}" type="continuous"
            axis_xyz="0 1 0"
            origin_rpy="0 0 0" origin_xyz="${ - _x}  ${ (chassis_W/2 + wheel_L + wheels_offset)} ${wheel_R}"
            parent="${link_00_name}" child="${link_05_name}"
            limit_e="1000" limit_l="-3.14" limit_u="3.14" limit_v="0.5" />
            
-  <m_link_mesh name="${link_05_name}" 
+  <m_link_mesh_cylinder name="${link_05_name}" 
               origin_rpy="0 0 0" origin_xyz="0 0 0"
               mass="${wheels_mass}"
               ixx="0.1" ixy="0" ixz="0"
               iyy="0.1" iyz="0"
               izz="0.1"
+              collision_origin_rpy="0 1.57079 1.57079" 
+              collisionn_radius="${wheel_R}" collisionn_length="${wheel_L + wheel_L*.45 }"
               meshfile="${the_meshfile}/wheel.dae"
               meshscale="${wheel_scale_r} ${wheel_scale_l} ${wheel_scale_r}" />  
 </robot>

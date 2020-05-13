@@ -1,13 +1,16 @@
 <?xml version="1.0" ?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
   
+
+ <!-- <xacro:include filename="$(find jaguar_pkg)/gazebo_plugins/fins.gazebo" /> -->
+
    <xacro:property name="_x" value="${chassis_L/2 - wheel_R}" /> 
 
 
 <!-- Front Left -->
   <m_joint name="${link_00_name}__${link_12_name}" type="continuous"
            axis_xyz="0 1 0"
-           origin_rpy="0 2.97 3.14" origin_xyz="${_x} ${ chassis_W/2 + wheel_L + fin_w + wheels_offset*3 }  ${wheel_R}"
+           origin_rpy="0 2.97 3.14" origin_xyz="${_x} ${ chassis_W/2 + wheel_L + fin_w + wheels_offset + fins_offset }  ${wheel_R}"
            parent="${link_00_name}" child="${link_12_name}"
            limit_e="1000" limit_l="-1.57" limit_u="1.57" limit_v="0.5" />
 
@@ -23,7 +26,7 @@
 <!-- Rear Left -->
    <m_joint name="${link_00_name}__${link_13_name}" type="continuous"
            axis_xyz="0 1 0"
-           origin_rpy="0 0 0" origin_xyz="${- _x} ${ chassis_W/2 + wheel_L + fin_w + wheels_offset*3 }  ${wheel_R}"
+           origin_rpy="0 0 0" origin_xyz="${- _x} ${ chassis_W/2 + wheel_L + fin_w + wheels_offset + fins_offset }  ${wheel_R}"
            parent="${link_00_name}" child="${link_13_name}"
            limit_e="1000" limit_l="-1.57" limit_u="1.57" limit_v="0.5" />
 
@@ -39,7 +42,7 @@
 <!-- Front Right -->
    <m_joint name="${link_00_name}__${link_14_name}" type="continuous"
            axis_xyz="0 1 0"
-           origin_rpy="0 -0.17 3.14" origin_xyz="${_x} ${ -(chassis_W/2 + wheel_L + fin_w + wheels_offset*3) }  ${wheel_R}"
+           origin_rpy="0 -0.17 3.14" origin_xyz="${_x} ${ -(chassis_W/2 + wheel_L + fin_w + wheels_offset + fins_offset) }  ${wheel_R}"
            parent="${link_00_name}" child="${link_14_name}"
            limit_e="1000" limit_l="-1.57" limit_u="1.57" limit_v="0.5" />
 
@@ -55,7 +58,7 @@
 <!-- Rear right -->
   <m_joint name="${link_00_name}__${link_15_name}" type="continuous"
            axis_xyz="0 1 0"
-           origin_rpy="0 0 0" origin_xyz="${- _x} ${-(chassis_W/2 + wheel_L + fin_w + wheels_offset*3)}  ${wheel_R}"
+           origin_rpy="0 0 0" origin_xyz="${- _x} ${-(chassis_W/2 + wheel_L + fin_w + wheels_offset + fins_offset)}  ${wheel_R}"
            parent="${link_00_name}" child="${link_15_name}"
            limit_e="1000" limit_l="-1.57" limit_u="1.57" limit_v="0.5" />
 
