@@ -5,6 +5,15 @@
     <plugin name="skid_steer_drive_controller" filename="libgazebo_ros_skid_steer_drive.so">
       <updateRate>10.0</updateRate>
       <robotNamespace>/</robotNamespace>
+      
+      <commandTopic>cmd_vel</commandTopic>
+      <odometryTopic>odom</odometryTopic>
+      <odometryFrame>odom</odometryFrame>
+      <covariance_x>0.000100</covariance_x>
+      <covariance_y>0.000100</covariance_y>
+      <covariance_yaw>0.010000</covariance_yaw>
+      
+      
       <leftFrontJoint>${link_00_name}__${link_02_name}</leftFrontJoint>
       <rightFrontJoint>${link_00_name}__${link_03_name}</rightFrontJoint>
       <leftRearJoint>${link_00_name}__${link_05_name} </leftRearJoint>

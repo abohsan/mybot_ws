@@ -7,7 +7,8 @@
   <arg name="debug" default="false"/>
   
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" value="$(find gazebo_pkg)/worlds/closed_room.world"/>
+    <!-- <arg name="world_name" value="$(find mybot_gazebo)/worlds/closed_room.world"/> -->
+    <arg name="world_name" value="$(find mybot_gazebo)/worlds/costum1.world"/>
     <arg name="paused" value="$(arg paused)"/>
     <arg name="use_sim_time" value="$(arg use_sim_time)"/>
     <arg name="gui" value="$(arg gui)"/>
@@ -16,21 +17,27 @@
   </include>
 
   
-  
+
+<rosparam file="$(find jaguar_pkg)/config/control/control.yaml" command="load"/>
+
 
 <rosparam file="$(find jaguar_pkg)/config/control/joint_states.yaml" command="load"/>
-<rosparam file="$(find jaguar_pkg)/config/control/arm_joint_control.yaml" command="load"/>
+<node name="joint_controller_spawner" pkg="controller_manager" type="spawner"
+  respawn="true" output="screen" 
+   args="/Diff_Drive/joint_state_controller"/>
 
+
+
+<!-- <rosparam file="$(find jaguar_pkg)/config/control/arm_joint_control.yaml" command="load"/>
 <node name="jaguar_arm_controller_spawner" pkg="controller_manager" type="spawner"
   respawn="true" output="screen" 
-   args="/Diff_Drive/joint_state_controller
-       /jaguar_arm_controller/base_position_controller
-       /jaguar_arm_controller/arm_1_position_controller
-       /jaguar_arm_controller/arm_2_position_controller
-       /jaguar_arm_controller/arm_3_position_controller
-       /jaguar_arm_controller/arm_4_position_controller
-       "/>
-
+   args="/jaguar_arm_controller/base_position_controller
+        /jaguar_arm_controller/arm_1_position_controller
+        /jaguar_arm_controller/arm_2_position_controller
+        /jaguar_arm_controller/arm_3_position_controller
+        /jaguar_arm_controller/arm_4_position_controller
+       "/> -->
+      
 <param name="robot_description" command="$(find xacro)/xacro '$(find jaguar_pkg)/urdf/jaguar.xacro'"/>
 
 <node name="jaguar_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"

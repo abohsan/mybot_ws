@@ -28,9 +28,9 @@
         </geometry>
       </visual>
       <collision>
-        <origin rpy="0 0 0" xyz="0 0 0.03585"/>
+        <origin rpy="0 0 0" xyz="0 0 ${0.03585 * scaleModel}"/>
         <geometry>
-          <cylinder radius="0.0516" length="0.0717"/>
+          <cylinder radius="${0.0516 * scaleModel}" length="${0.0717 * scaleModel}"/>
         </geometry>
       </collision>
     </link>

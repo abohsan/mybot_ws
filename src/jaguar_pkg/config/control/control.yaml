@@ -1,0 +1,8 @@
+gazebo_ros_control/pid_gains:
+  chassis__base_arm: {p: 100.0, i: 0.01, d: 10.0}
+  base_arm__arm_1:   {p: 100.0, i: 0.01, d: 10.0}
+  arm_1__arm_2:      {p: 100.0, i: 0.01, d: 10.0}
+  arm_2__arm_3:      {p: 100.0, i: 0.01, d: 10.0}
+  arm_3__arm_4:      {p: 100.0, i: 0.01, d: 10.0}
+  # link_09__link_10: {p: 100.0, i: 0.01, d: 10.0}
+  # link_09__link_11: {p: 100.0, i: 0.01, d: 10.0}

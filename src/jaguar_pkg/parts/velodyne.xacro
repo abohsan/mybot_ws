@@ -33,7 +33,7 @@
     </inertial>
   </link>
 
- <VLP-16 parent="${link_tail}" name="velodyne" topic="/velodyne_points" hz="10" samples="440" gpu="${gpu}" scaleModel="${scale_all}">
+  <VLP-16 parent="${link_tail}" name="velodyne" topic="/velodyne_points" hz="10" samples="440" gpu="${gpu}" scaleModel="${scale_all}">
     <origin xyz="0 0 ${0.27 * scale_all}" rpy="0 0 0" />
   </VLP-16> 
 
